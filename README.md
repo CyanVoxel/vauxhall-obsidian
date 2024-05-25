@@ -49,4 +49,4 @@ Choose between several header color styles, including:
 - Gradient (Blue/Red)
 
 ![](screenshots/vauxhall_obsidian_misc.png)
-_Pictured: "Rainbow"_
+___Pictured:__ "Rainbow" header style + "[Colored Sidebar](https://github.com/CyanVoxel/Obsidian-Colored-Sidebar)" snippet._
