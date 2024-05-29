@@ -79,6 +79,19 @@ settings:
     type: class-toggle
 */
 
+/* Default Base Color */
+.theme-dark,
+.theme-light,
+.vauxhall-indigo {
+  --hue-bg: 238;
+  --hue-fg: 255;
+  --sat-bg: 60%;
+  --sat-fg: 100%;
+  &.theme-light {
+    --lum-fg: 50%;
+    --lum-bg: 95%;
+  }
+}
 
 .vauxhall-teal {
   --hue-bg: 200;
@@ -94,17 +107,6 @@ settings:
 .vauxhall-blue {
   --hue-bg: 228;
   --hue-fg: 220;
-  --sat-bg: 60%;
-  --sat-fg: 100%;
-  &.theme-light {
-    --lum-fg: 50%;
-    --lum-bg: 95%;
-  }
-}
-
-.vauxhall-indigo {
-  --hue-bg: 238;
-  --hue-fg: 255;
   --sat-bg: 60%;
   --sat-fg: 100%;
   &.theme-light {
@@ -168,6 +170,9 @@ settings:
   }
 }
 
+/* Default Intensity */
+.theme-dark,
+.theme-light,
 .intensity-standard {
   --lum: 11%;
 }
@@ -182,6 +187,18 @@ settings:
 .intensity-void {
   --lum: 0%;
   --background-modifier-border: var(--color-base-40);
+}
+
+/* Default Header Colors */
+.theme-dark,
+.theme-light,
+.headers-gradient-cyan-to-purple {
+  --h1-color: var(--cool-cyan);
+  --h2-color: var(--light-blue);
+  --h3-color: var(--blue);
+  --h4-color: var(--blue-violet);
+  --h5-color: var(--violet);
+  --h6-color: var(--purple);
 }
 
 .headers-mono {
@@ -218,15 +235,6 @@ settings:
   --h4-color: color-mix(in srgb, var(--cool-cyan) 60%, var(--blue));
   --h5-color: color-mix(in srgb, var(--cool-cyan) 40%, var(--blue));
   --h6-color: var(--blue);
-}
-
-.headers-gradient-cyan-to-purple {
-  --h1-color: var(--cool-cyan);
-  --h2-color: var(--light-blue);
-  --h3-color: var(--blue);
-  --h4-color: var(--blue-violet);
-  --h5-color: var(--violet);
-  --h6-color: var(--purple);
 }
 
 .headers-gradient-blue-to-red {
@@ -491,4 +499,4 @@ img {
 	border-width: 2px;
 	border-style: solid;
 	border-color: var(--color-base-30);
-}
+} */
