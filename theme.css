@@ -341,6 +341,7 @@ settings:
     var(--h1-color) 25%,
     transparent
   );
+  --code-background: var(--color-base-25);
 }
 
 .theme-light {
@@ -434,6 +435,7 @@ settings:
     var(--h1-color) 25%,
     transparent
   );
+  --code-background: var(--color-base-30);
 }
 
 h1 {
