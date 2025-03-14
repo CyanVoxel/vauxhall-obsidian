@@ -77,6 +77,47 @@ settings:
     title: Accent Color Main Header
     description: "Apply the user's accent color to H1 headers."
     type: class-toggle
+
+  # Workspace Layout 
+  
+  - 
+      id: layout-settings
+      title: Workspace Layout Settings
+      type: heading
+      level: 1
+      collapsed: true
+  -
+      id: layout-select
+      title: Workspace Layout
+      description: "The aesthetic of the workspace layout."
+      type: class-select
+      allowEmpty: false
+      default: none
+      options:
+        -
+          label: Default
+          value: none
+        -
+          label: Card
+          value: vauxhall-card-layout
+  -
+      id: card-layout-settings
+      title: Card Layout Settings
+      type: heading
+      level: 2
+      collapsed: true
+  -
+        id: invert-card-layout-colors
+        title: Invert Card Layout Colors
+        description: "Invert the colors of the card layout."
+        type: class-toggle
+        default: false
+  -
+        id: card-layout-low-contrast
+        title: Lower Contrast Colors
+        description: "Use lower contrast colors for the card layout."
+        type: class-toggle
+        default: false
 */
 
 /* Default Base Color */
@@ -250,7 +291,67 @@ settings:
   --h1-color: var(--color-accent) !important;
 }
 
-.theme-dark {
+body {
+  --color-base-00: color-mix(in srgb, var(--vauxhall-bg) 25%, var(--black));
+  --color-base-05: color-mix(in srgb, var(--vauxhall-bg) 40%, var(--black));
+  --color-base-10: color-mix(in srgb, var(--vauxhall-bg) 50%, var(--black));
+  --color-base-15: color-mix(in srgb, var(--vauxhall-bg) 60%, var(--black));
+  --color-base-20: color-mix(in srgb, var(--vauxhall-bg) 80%, var(--black));
+  --color-base-25: color-mix(in srgb, var(--vauxhall-bg) 85%, var(--black));
+  --color-base-30: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 90%,
+    var(--vauxhall-fg)
+  );
+  --color-base-35: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 95%,
+    var(--vauxhall-fg)
+  );
+  --color-base-40: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 80%,
+    var(--vauxhall-fg)
+  );
+  --color-base-45: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 70%,
+    var(--vauxhall-fg)
+  );
+  --color-base-50: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 60%,
+    var(--vauxhall-fg)
+  );
+  --color-base-60: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 50%,
+    var(--vauxhall-fg)
+  );
+  --color-base-70: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 30%,
+    var(--vauxhall-fg)
+  );
+  --color-base-80: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 20%,
+    var(--vauxhall-fg)
+  );
+  --color-base-90: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 10%,
+    var(--vauxhall-fg)
+  );
+  --color-base-100: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 0%,
+    var(--vauxhall-fg)
+  );
+}
+
+.theme-dark,
+.is-mobile.theme-dark {
   --black: #000;
   --white: #fff;
 
@@ -278,7 +379,10 @@ settings:
   --color-purple: var(--violet);
   --color-pink: var(--magenta);
 
+  --titlebar-background: var(--color-base-10);
+
   --background-primary: var(--color-base-00);
+  --background-primary-alt: var(--color-base-10);
   --background-secondary: var(--color-base-05);
   --titlebar-background: var(--color-base-00);
   --titlebar-background-focused: var(--color-base-10);
@@ -286,8 +390,9 @@ settings:
   --color-base-00: color-mix(in srgb, var(--vauxhall-bg) 25%, var(--black));
   --color-base-05: color-mix(in srgb, var(--vauxhall-bg) 40%, var(--black));
   --color-base-10: color-mix(in srgb, var(--vauxhall-bg) 50%, var(--black));
+  --color-base-15: color-mix(in srgb, var(--vauxhall-bg) 60%, var(--black));
   --color-base-20: color-mix(in srgb, var(--vauxhall-bg) 80%, var(--black));
-  --color-base-25: color-mix(in srgb, var(--vauxhall-bg) 80%, var(--black));
+  --color-base-25: color-mix(in srgb, var(--vauxhall-bg) 85%, var(--black));
   --color-base-30: color-mix(
     in srgb,
     var(--vauxhall-bg) 90%,
@@ -303,6 +408,11 @@ settings:
     var(--vauxhall-bg) 80%,
     var(--vauxhall-fg)
   );
+  --color-base-45: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 70%,
+    var(--vauxhall-fg)
+  );
   --color-base-50: color-mix(
     in srgb,
     var(--vauxhall-bg) 60%,
@@ -310,12 +420,22 @@ settings:
   );
   --color-base-60: color-mix(
     in srgb,
-    var(--vauxhall-bg) 60%,
+    var(--vauxhall-bg) 50%,
     var(--vauxhall-fg)
   );
   --color-base-70: color-mix(
     in srgb,
     var(--vauxhall-bg) 30%,
+    var(--vauxhall-fg)
+  );
+  --color-base-80: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 20%,
+    var(--vauxhall-fg)
+  );
+  --color-base-90: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 10%,
     var(--vauxhall-fg)
   );
   --color-base-100: color-mix(
@@ -325,15 +445,16 @@ settings:
   );
 
   --text-normal: color-mix(in srgb, var(--vauxhall-fg) 30%, var(--white));
-  --background-modifier-form-field: var(--color-base-20);
-  --background-modifier-hover: var(--color-base-35);
+  --background-modifier-form-field: var(--color-base-30);
+  --background-modifier-hover: var(--color-base-40);
+  --nav-item-background-hover: var(--color-base-40);
 
   /* File Navigation Guides */
   --nav-indentation-guide-color: var(--color-base-30);
 
   /* Indentation Guides for Lists */
   --indentation-guide-color: var(--color-base-30);
-  --indentation-guide-color-active: var(--color-base-35);
+  --indentation-guide-color-active: var(--color-base-40);
 
   --text-highlight-bg: color-mix(in srgb, var(--h1-color) 25%, transparent);
   --text-highlight-bg-active: color-mix(
@@ -341,10 +462,79 @@ settings:
     var(--h1-color) 25%,
     transparent
   );
+
   --code-background: var(--color-base-25);
+
+  /* Used for active state in file navigation */
+  --active-bg: rgba(188, 182, 196, 0.1);
+
+  --interactive-accent: var(--color-base-45);
+  --interactive-accent-hover: var(--color-base-60);
+  --interactive-normal: var(--color-base-30);
+  --interactive-hover: var(--color-base-40);
+
+  --color-accent: var(--color-base-70);
+  --color-accent-1: var(--color-base-80);
+  --color-accent-2: var(--color-base-100);
+  --text-selection: var(--color-base-45);
+  --text-accent: var(--color-base-100);
+  --text-accent-hover: var(--color-base-70);
+  --text-on-accent: #ffffff !important;
+
+  /* Setting below is for links and special text in the settings descriptions */
+  .setting-item-description {
+    --link-color: var(--color-base-100);
+    --link-color-hover: var(--color-base-80);
+  }
+
+  /* Setting to use accent color for links in notes */
+  .cm-underline,
+  .cm-link,
+  .cm-url,
+  .cm-hmd-internal-link,
+  .external-link,
+  .internal-link,
+  .is-unresolved {
+    --link-color-hover: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+    color: hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+  }
+
+  .cm-formatting-link,
+  .cm-formatting-link-string {
+    color: var(--color-base-50) !important;
+  }
+
+  --background-modifier-hover: color-mix(
+    in srgb,
+    var(--color-base-100) 5%,
+    var(--active-bg)
+  ) !important;
+
+  --background-modifier-active-hover: color-mix(
+    in srgb,
+    var(--color-base-100) 10%,
+    var(--active-bg)
+  ) !important;
+
+  --background-modifier-border-focus: var(--color-base-45);
+
+  --tag-background: color-mix(
+    in srgb,
+    var(--color-base-100) 10%,
+    var(--vauxhall-bg)
+  ) !important;
+
+  --tag-background-hover: var(--color-base-60);
+  --nav-item-background-selected: var(--color-base-20);
+
+  /* Search input placeholder text color */
+  .search-input-container input::placeholder {
+    color: var(--color-base-70);
+  }
 }
 
-.theme-light {
+.theme-light,
+.is-mobile.theme-light {
   --black: #000;
   --white: #fff;
 
@@ -365,7 +555,7 @@ settings:
 
   --color-red: var(--hot-red);
   --color-orange: #fa9f50;
-  --color-yellow: #ffd85e;
+  --color-yellow: #ecb716;
   --color-green: var(--mint);
   --color-cyan: var(--cool-cyan);
   --color-blue: var(--blue);
@@ -373,6 +563,7 @@ settings:
   --color-pink: var(--magenta);
 
   --background-primary: var(--color-base-05);
+  --background-primary-alt: var(--color-base-25);
   --background-secondary: var(--color-base-05);
   --titlebar-background: var(--color-base-00);
   --titlebar-background-focused: var(--color-base-10);
@@ -381,7 +572,7 @@ settings:
   --color-base-05: color-mix(in srgb, var(--vauxhall-bg) 40%, var(--white));
   --color-base-10: color-mix(in srgb, var(--vauxhall-bg) 50%, var(--white));
   --color-base-20: color-mix(in srgb, var(--vauxhall-bg) 80%, var(--white));
-  --color-base-25: color-mix(in srgb, var(--vauxhall-bg) 80%, var(--white));
+  --color-base-25: color-mix(in srgb, var(--vauxhall-bg) 85%, var(--white));
   --color-base-30: color-mix(
     in srgb,
     var(--vauxhall-bg) 90%,
@@ -397,6 +588,11 @@ settings:
     var(--vauxhall-bg) 80%,
     var(--vauxhall-fg)
   );
+  --color-base-45: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 70%,
+    var(--vauxhall-fg)
+  );
   --color-base-50: color-mix(
     in srgb,
     var(--vauxhall-bg) 60%,
@@ -404,12 +600,17 @@ settings:
   );
   --color-base-60: color-mix(
     in srgb,
-    var(--vauxhall-bg) 60%,
+    var(--vauxhall-bg) 50%,
     var(--vauxhall-fg)
   );
   --color-base-70: color-mix(
     in srgb,
     var(--vauxhall-bg) 30%,
+    var(--vauxhall-fg)
+  );
+  --color-base-80: color-mix(
+    in srgb,
+    var(--vauxhall-bg) 20%,
     var(--vauxhall-fg)
   );
   --color-base-100: color-mix(
@@ -421,13 +622,14 @@ settings:
   --text-normal: color-mix(in srgb, var(--vauxhall-fg) 50%, var(--black));
   --background-modifier-form-field: var(--color-base-20);
   --background-modifier-hover: var(--color-base-35);
+  --nav-item-background-hover: var(--color-base-35);
 
   /* File Navigation Guides */
   --nav-indentation-guide-color: var(--color-base-30);
 
   /* Indentation Guides for Lists */
   --indentation-guide-color: var(--color-base-30);
-  --indentation-guide-color-active: var(--color-base-35);
+  --indentation-guide-color-active: var(--color-base-45);
 
   --text-highlight-bg: color-mix(in srgb, var(--h1-color) 25%, transparent);
   --text-highlight-bg-active: color-mix(
@@ -435,7 +637,73 @@ settings:
     var(--h1-color) 25%,
     transparent
   );
-  --code-background: var(--color-base-30);
+
+  --code-background: var(--color-base-25);
+
+  /* Used for active state in file navigation */
+  --active-bg: rgba(188, 182, 196, 0.1);
+
+  --interactive-accent: var(--color-base-45);
+  --interactive-accent-hover: var(--color-base-50);
+  --interactive-hover: var(--color-base-30);
+
+  --color-accent: var(--color-base-70);
+  --color-accent-1: var(--color-base-80);
+  --color-accent-2: var(--color-base-100);
+  --text-selection: var(--color-base-45);
+  --text-accent: var(--color-base-100);
+  --text-accent-hover: var(--color-base-60);
+
+  /* Setting below is for links and special text in the settings descriptions */
+  .setting-item-description {
+    --link-color: var(--color-base-100);
+    --link-color-hover: var(--color-base-80);
+  }
+
+  /* Setting to use accent color for links in notes */
+  .cm-underline,
+  .cm-link,
+  .cm-url,
+  .cm-hmd-internal-link,
+  .external-link,
+  .internal-link,
+  .is-unresolved {
+    --link-color-hover: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+    color: hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+  }
+
+  .cm-formatting-link,
+  .cm-formatting-link-string {
+    color: var(--color-base-50) !important;
+  }
+
+  --background-modifier-hover: color-mix(
+    in srgb,
+    var(--color-base-100) 5%,
+    var(--active-bg)
+  ) !important;
+
+  --background-modifier-active-hover: color-mix(
+    in srgb,
+    var(--color-base-100) 10%,
+    var(--active-bg)
+  ) !important;
+
+  --background-modifier-border-focus: var(--color-base-40);
+
+  --tag-background: color-mix(
+    in srgb,
+    var(--color-base-100) 10%,
+    var(--vauxhall-bg)
+  ) !important;
+
+  --tag-background-hover: var(--color-base-45);
+  --nav-item-background-selected: var(--color-base-20);
+
+  /* Search input placeholder text color */
+  .search-input-container input::placeholder {
+    color: var(--color-base-70);
+  }
 }
 
 h1 {
@@ -487,9 +755,30 @@ img {
   box-shadow: none;
 }
 
-.callout[data-callout="note-toolbar"] {
+.callout[data-callout='note-toolbar'] {
   box-shadow: none;
   border-radius: 6px;
+}
+
+/* Calendar plugin fix */
+#calendar-container .year,
+#calendar-container .today {
+  color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+}
+
+/* Day Planner plugin fix */
+.day-controls .today {
+  background-color: var(--color-base-70);
+}
+
+/* Kanban calendar fix */
+.kanban-plugin__date-picker .flatpickr-day.today {
+  background-color: var(--color-base-50);
+}
+
+/* Toolbar plugin margin fix */
+.editingToolbarDefaultAesthetic {
+  margin: 0 0.75rem;
 }
 
 /* input {
@@ -502,3 +791,243 @@ img {
 	border-style: solid;
 	border-color: var(--color-base-30);
 } */
+
+/* Controls the background color of the graph controls under specific conditions such as vertical splitting */
+/* Deals with bug where graph controls are a different color when split vertically */
+.workspace-split:not(.mod-root) .graph-controls.is-close,
+.workspace-split:not(.mod-root) .graph-controls,
+.workspace-split:not(.mod-root) .graph-controls:not(.is-close) {
+  background-color: var(--background-primary);
+}
+
+/* Add borders to workspace drawers on mobile */
+body.is-mobile .workspace-drawer,
+body.is-tablet .mod-settings {
+  border: 1px solid var(--background-modifier-border);
+}
+
+/* ======== CARD LAYOUT ======== */
+/* Credits to AnuPpuccin for the card layout https://github.com/AnubisNekhet/AnuPpuccin */
+
+/* Base card layout settings */
+body.vauxhall-card-layout {
+  /* Custom variables for potential future settings */
+  --vauxhall-card-layout-padding: 10px;
+  --vauxhall-card-radius: 16px;
+  --vauxhall-card-header-left-padding: 20px;
+  --card-background-color: var(--background-primary);
+  --card-foreground-color: var(--background-primary-alt);
+  --titlebar-background-focused: var(--card-background-color);
+  --titlebar-background: var(--card-background-color);
+  --divider-color: transparent;
+  --tab-outline-color: var(--background-modifier-border);
+  --tab-divider-color: transparent;
+  /* --divider-color-hover: var(--background-modifier-border); */
+  --divider-width: 4px;
+  --divider-width-hover: 4px;
+  --tab-background-active: var(--card-foreground-color);
+  --tab-container-background: var(--card-background-color);
+  --file-header-border: var(--border-width) solid
+    var(--background-modifier-border);
+  --ribbon-padding: 0;
+}
+
+body.vauxhall-card-layout.invert-card-layout-colors {
+  --card-background-color: var(--background-primary-alt);
+  --card-foreground-color: var(--background-primary);
+}
+
+body.vauxhall-card-layout.card-layout-low-contrast {
+  --background-primary-alt: var(--color-base-05);
+}
+
+/* Controls the background color of the surrounding margin / space of workspace */
+.vauxhall-card-layout .mod-vertical .workspace-tabs {
+  background-color: var(--card-background-color);
+}
+
+/* Controls parts of the background color of the workspace for stacked tabs */
+.vauxhall-card-layout
+  .workspace
+  .mod-root
+  .workspace-tabs.mod-stacked
+  .workspace-tab-container
+  .workspace-leaf {
+  background-color: var(--card-foreground-color);
+}
+
+/* Controls the background color of areas surrounding workspace and sidebar tabs when unfocused */
+body.vauxhall-card-layout .sidebar-toggle-button,
+body.vauxhall-card-layout .workspace-tabs.mod-top {
+  --tab-container-background: var(--card-background-color);
+}
+
+/* Removes the file header border when the banner is visible */
+body.vauxhall-card-layout
+  .workspace-tabs.mod-top:has(.obsidian-banner-wrapper) {
+  --file-header-border: none;
+}
+
+/* Color of the areas surrounding workspace and sidebar tabs when application is focused */
+body.vauxhall-card-layout.is-focused,
+body.vauxhall-card-layout.is-focused .sidebar-toggle-button,
+body.vauxhall-card-layout.is-focused .workspace-tabs.mod-top {
+  --tab-container-background: var(--card-background-color);
+}
+
+/* Controls small areas around the sidebar tabs as well as workspace controls on the left */
+body.vauxhall-card-layout .mod-left-split .workspace-tabs .workspace-leaf,
+body.vauxhall-card-layout .mod-right-split .workspace-tabs .workspace-leaf,
+body.vauxhall-card-layout .mod-left-split,
+body.vauxhall-card-layout .mod-vertical .workspace-tab-container,
+body.vauxhall-card-layout .mod-vertical,
+body.vauxhall-card-layout .workspace-split.mod-vertical,
+body.vauxhall-card-layout
+  .workspace-fake-target-overlay:not(.is-in-sidebar)
+  .workspace-tabs
+  .workspace-leaf,
+body.vauxhall-card-layout .mod-root .workspace-tabs .workspace-leaf,
+body.vauxhall-card-layout .workspace-ribbon.mod-left,
+body.vauxhall-card-layout .workspace-ribbon.mod-left:before {
+  background-color: var(--tab-container-background);
+}
+
+/* Side dock actions padding */
+body.vauxhall-card-layout .side-dock-actions {
+  padding: var(--size-4-2) var(--size-4-1) var(--size-4-3);
+}
+
+/* Side dock vault profile border */
+body.vauxhall-card-layout
+  .workspace-split.mod-left-split
+  .workspace-sidedock-vault-profile {
+  border: none;
+  margin: var(--vauxhall-card-layout-padding, 10px);
+  margin-bottom: 0;
+  background-color: transparent;
+}
+
+/* Ribbon margin fix */
+body.vauxhall-card-layout .workspace-ribbon.mod-left {
+  margin-top: calc(var(--header-height) - 1px);
+}
+
+/* Removes the bottom border of the ribbon */
+body.vauxhall-card-layout .workspace-tab-header-container,
+body.vauxhall-card-layout .workspace-ribbon.mod-left:before {
+  border-bottom: none;
+}
+
+/* Padding for workspace tabs */
+body.vauxhall-card-layout
+  .mod-vertical
+  .workspace-tabs
+  .workspace-tab-header-container {
+  padding-left: var(--vauxhall-card-header-left-padding, 20px);
+}
+
+body.vauxhall-card-layout
+  .mod-vertical
+  .workspace-tabs
+  .workspace-tab-header-container
+  .workspace-tab-header-container-inner {
+  margin: 6px -5px calc(var(--tab-outline-width) * -1);
+  z-index: 1;
+}
+
+body.vauxhall-card-layout .mod-left-split .workspace-tab-container,
+body.vauxhall-card-layout .mod-right-split .workspace-tab-container {
+  padding-left: var(--vauxhall-card-layout-padding, 10px);
+  padding-right: var(--vauxhall-card-layout-padding, 10px);
+  background-color: var(--tab-container-background);
+}
+
+/* Sets the colors of sidebar that isn't file explorer */
+body.vauxhall-card-layout:not(.is-phone)
+  .workspace-split
+  .workspace-leaf-content:not([data-type='file-explorer']) {
+  background-color: var(--card-foreground-color);
+  border: 1px solid var(--tab-outline-color);
+}
+
+.workspace-tabs .workspace-leaf .view-content,
+.view-header,
+.is-focused .workspace-leaf.mod-active .view-header {
+  background-color: var(--card-foreground-color);
+}
+
+.mod-fade:not(.mod-at-end):after {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--card-foreground-color)
+  );
+}
+
+/* Modifies properties of the workspace leaf content when stacked */
+body.vauxhall-card-layout
+  .workspace-split
+  .mod-stacked
+  .workspace-leaf-content {
+  border-radius: 0;
+  border: none;
+  margin-bottom: 0px;
+  border-left: none;
+}
+
+body.vauxhall-card-layout .workspace-split.mod-horizontal > * {
+  width: unset;
+}
+
+/* Stacked tab border settings */
+body.vauxhall-card-layout
+  .workspace
+  .workspace-tabs.mod-stacked
+  .workspace-tab-container
+  .workspace-tab-header {
+  border-style: solid;
+  border-radius: var(--vauxhall-card-radius, var(--radius-xl)) 0px 0px
+    var(--vauxhall-card-radius, var(--radius-xl));
+  border-width: var(--tab-outline-width);
+  border-color: var(--tab-outline-color);
+  border-right: var(--tab-outline-width) solid var(--tab-outline-color);
+}
+
+body.vauxhall-card-layout
+  .workspace
+  .workspace-tabs.mod-stacked
+  .workspace-leaf {
+  border-left-width: 0px;
+  border-top-width: var(--tab-outline-width);
+  border-bottom-width: var(--tab-outline-width);
+  border-style: solid;
+  border-color: var(--tab-outline-color);
+  border-radius: 0 var(--vauxhall-card-radius, var(--radius-xl))
+    var(--vauxhall-card-radius, var(--radius-xl)) 0;
+}
+
+body.vauxhall-card-layout
+  .workspace
+  .workspace-tabs.mod-stacked
+  .workspace-tab-container {
+  padding-bottom: var(--vauxhall-card-layout-padding, 10px);
+}
+
+body.vauxhall-card-layout .workspace-drop-overlay:before {
+  width: calc(100% - 6px - var(--vauxhall-card-layout-padding, 0) * 2);
+  height: calc(100% - 6px - var(--vauxhall-card-layout-padding, 0) * 2);
+  margin: auto;
+}
+
+/* Corrections for when NOT mobile */
+body.vauxhall-card-layout:not(.is-phone) .mod-vertical .workspace-tabs {
+  padding-left: var(--vauxhall-card-layout-padding, 10px);
+  padding-right: var(--vauxhall-card-layout-padding, 10px);
+}
+
+body.vauxhall-card-layout:not(.is-phone)
+  .workspace-split
+  .workspace-leaf-content:not([data-type='file-explorer']) {
+  border-radius: var(--vauxhall-card-radius, var(--radius-xl));
+  margin-bottom: var(--vauxhall-card-layout-padding, 10px);
+}
